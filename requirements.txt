@@ -1,0 +1,13 @@
+##############################################
+###   Dependencies for RDAP Explorer       ###
+###                                        ###
+### To install, run:                       ###
+###      $ pip install -r requirements.txt ###
+###                                        ###
+##############################################
+
+## Django web framework ##
+django >= 1.10.5, < 1.11
+
+## IP information lookup ##
+ipwhois >= 0.14.0, < 1.0
