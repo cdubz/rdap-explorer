@@ -1,1 +1,18 @@
-{{ results }}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <script src="{% static "json-formatter.js" %}"></script>
+</head>
+<body>
+    <div id="results"></div>
+    <script>
+        var results = document.getElementById('results');
+        var formatter = new JSONFormatter({{ results|safe }}, 1, {hoverPreviewEnabled: true});
+        results.innerHTML = '';
+        results.appendChild(formatter.render());
+    </script>
+</body>
+</html>

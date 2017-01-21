@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from ipwhois import IPWhois
+from json import dumps
 
 from .forms import QueryForm
 
@@ -22,5 +23,7 @@ def index(request):
 
 def results(request, query):
     ip = IPWhois(query)
-    results = ip.lookup_rdap(retry_count=1, depth=2, bootstrap=False)
-    return render(request, 'query/results.html', {'results': results})
+    results = ip.lookup_rdap(retry_count=1, depth=2, inc_raw=True)
+    return render(request, 'query/results.html', {
+        'results': dumps(results)
+    })
