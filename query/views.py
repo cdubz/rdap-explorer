@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.cache import cache_page
+from django.views.decorators.csrf import csrf_protect
 from json import dumps
 
 from .forms import QueryForm
@@ -31,6 +32,7 @@ def index(request):
 
 
 @cache_page(86400)
+@csrf_protect
 def results(request, query):
     title = 'Results'
     error = None
