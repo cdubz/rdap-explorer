@@ -32,6 +32,7 @@ def index(request):
 
 @cache_page(86400)
 def results(request, query):
+    title = 'Results'
     error = None
     result = {}
 
@@ -39,10 +40,12 @@ def results(request, query):
     try:
         ip = ipwhois.IPWhois(query)
         result = ip.lookup_rdap(retry_count=1, depth=2, inc_raw=True)
+        title = ip.address_str
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
+        title = 'Error'
     return render(request, 'query/index.html', {
-        'title': 'Results',
+        'title': title,
         'error': error,
         'form': form,
         'result': dumps(result)
