@@ -1,3 +1,7 @@
+"""
+Views for the rdap_explorer project, query app.
+"""
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse

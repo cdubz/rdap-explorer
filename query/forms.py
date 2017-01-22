@@ -1,3 +1,7 @@
+"""
+Forms for the rdap_explorer project, query app.
+"""
+
 from django import forms
 
 

@@ -1,3 +1,7 @@
+"""
+Paths for the rdap_explorer project, query app.
+"""
+
 from django.conf.urls import url
 from . import views
 
