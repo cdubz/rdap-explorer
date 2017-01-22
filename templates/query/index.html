@@ -16,14 +16,19 @@
     {{ form }}
     <input type="submit" value="Explore" />
 </form>
-{% if results %}
+{% if error %}
+    <div class="error">
+        <h2>Error</h2>
+        {{ error }}
+    </div>
+{% elif result %}
     <h2>Results</h2>
-    <div id="results"></div>
+    <div id="result"></div>
     <script>
-        var results = document.getElementById('results');
-        var formatter = new JSONFormatter({{ results|safe }}, 1);
-        results.innerHTML = '';
-        results.appendChild(formatter.render());
+        var result = document.getElementById('result');
+        var formatter = new JSONFormatter({{ result|safe }}, 1);
+        result.innerHTML = '';
+        result.appendChild(formatter.render());
     </script>
 {% endif %}
 </body>

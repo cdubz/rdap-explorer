@@ -2,10 +2,11 @@
 Views for the rdap_explorer project, query app.
 """
 
+import ipwhois
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from ipwhois import IPWhois
 from json import dumps
 
 from .forms import QueryForm
@@ -29,11 +30,18 @@ def index(request):
 
 
 def results(request, query):
+    error = None
+    result = {}
+
     form = QueryForm(initial={"query": query})
-    ip = IPWhois(query)
-    results = ip.lookup_rdap(retry_count=1, depth=2, inc_raw=True)
+    try:
+        ip = ipwhois.IPWhois(query)
+        result = ip.lookup_rdap(retry_count=1, depth=2, inc_raw=True)
+    except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
+        error = e
     return render(request, 'query/index.html', {
         'title': 'Results',
+        'error': error,
         'form': form,
-        'results': dumps(results)
+        'result': dumps(result)
     })
