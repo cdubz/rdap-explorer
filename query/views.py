@@ -22,12 +22,18 @@ def index(request):
     else:
         form = QueryForm()
 
-    return render(request, 'query/index.html', {'form': form})
+    return render(request, 'query/index.html', {
+        'title': 'Query',
+        'form': form
+    })
 
 
 def results(request, query):
+    form = QueryForm(initial={"query": query})
     ip = IPWhois(query)
     results = ip.lookup_rdap(retry_count=1, depth=2, inc_raw=True)
-    return render(request, 'query/results.html', {
+    return render(request, 'query/index.html', {
+        'title': 'Results',
+        'form': form,
         'results': dumps(results)
     })
