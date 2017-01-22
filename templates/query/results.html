@@ -10,7 +10,7 @@
     <div id="results"></div>
     <script>
         var results = document.getElementById('results');
-        var formatter = new JSONFormatter({{ results|safe }}, 1, {hoverPreviewEnabled: true});
+        var formatter = new JSONFormatter({{ results|safe }}, 1);
         results.innerHTML = '';
         results.appendChild(formatter.render());
     </script>
