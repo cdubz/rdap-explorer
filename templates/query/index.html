@@ -3,25 +3,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} | RDAP Explorer</title>
-    <script src="{% static "json-formatter.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <script src="{% static "js/json-formatter.js" %}"></script>
 </head>
 <body>
-    <h1>Query</h1>
-    <form action="/query/" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Explore" />
-    </form>
-    {% if results %}
-        <h1>Results</h1>
-        <div id="results"></div>
-        <script>
-            var results = document.getElementById('results');
-            var formatter = new JSONFormatter({{ results|safe }}, 1);
-            results.innerHTML = '';
-            results.appendChild(formatter.render());
-        </script>
-    {% endif %}
+<h1>RDAP Explorer</h1>
+<h2>Query</h2>
+<form action="/query/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Explore" />
+</form>
+{% if results %}
+    <h2>Results</h2>
+    <div id="results"></div>
+    <script>
+        var results = document.getElementById('results');
+        var formatter = new JSONFormatter({{ results|safe }}, 1);
+        results.innerHTML = '';
+        results.appendChild(formatter.render());
+    </script>
+{% endif %}
 </body>
 </html>
