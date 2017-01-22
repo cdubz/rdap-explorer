@@ -62,6 +62,15 @@ DATABASES = {
     }
 }
 
+# Cache
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'page_cache',
+    }
+}
+
 # Internationalization
 
 LANGUAGE_CODE = 'en-us'

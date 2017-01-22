@@ -7,6 +7,7 @@ import ipwhois
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.decorators.cache import cache_page
 from json import dumps
 
 from .forms import QueryForm
@@ -29,6 +30,7 @@ def index(request):
     })
 
 
+@cache_page(86400)
 def results(request, query):
     error = None
     result = {}
