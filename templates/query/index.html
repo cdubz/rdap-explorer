@@ -10,7 +10,7 @@
     <script src="{% static "js/json-formatter.js" %}"></script>
 </head>
 <body class="container">
-<div class="columns nav">
+<div class="columns header">
     <div class="column">
         <header class="navbar">
             <section class="navbar-section">
@@ -21,7 +21,7 @@
         </header>
     </div>
 </div>
-<div class="columns">
+<div class="columns app">
     <div class="column col-xl-6 col-lg-12 query">
        <h3>Query</h3>
         <form action="/" method="post">
@@ -53,7 +53,7 @@
     </div>
     {% endif %}
 </div>
-<div class="columns">
+<div class="columns info">
     <div class="column col-xl-12 what-is">
         <h3>What is RDAP?</h3>
         <blockquote>
@@ -72,6 +72,11 @@
             </ul>
             <cite>- APNIC, <a href="https://www.apnic.net/apnic-info/whois_search/about/rdap">Registration Data Access Protocol</a></cite>
         </blockquote>
+    </div>
+</div>
+<div class="columns footer">
+    <div class="column col-xl-12">
+        <footer>rdap explorer</footer>
     </div>
 </div>
 </body>

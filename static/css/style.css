@@ -1,8 +1,8 @@
-.nav {
+.header, .footer {
     background-color: #689f38;
 }
 
-.nav a {
+.header a {
     color: #fff;
 }
 
@@ -24,4 +24,9 @@
 
 .what-is {
     background-color: #e8f5e9;
+}
+
+footer {
+    color: #fff;
+    text-align: center;
 }
