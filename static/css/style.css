@@ -13,3 +13,11 @@
     text-decoration: none;
     vertical-align: middle;
 }
+
+.query {
+    background-color: #9ccc65;
+}
+
+.results {
+    background-color: #f1f8e9;
+}

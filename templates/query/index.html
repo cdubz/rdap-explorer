@@ -22,13 +22,15 @@
     </div>
 </div>
 <div class="columns">
-    <div class="column">
+    <div class="column col-md-8 query">
        <h3>Query</h3>
         <form action="/" method="post">
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="Explore" />
         </form>
+    </div>
+    <div class="column col-md-8 results">
         {% if error %}
             <div class="error">
                 <h2>Error</h2>
