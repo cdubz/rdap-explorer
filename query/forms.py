@@ -9,5 +9,8 @@ class QueryForm(forms.Form):
     query = forms.CharField(
         label='',
         max_length=45,  # Max length of an IPv6 address.
-        widget=forms.TextInput(attrs={'placeholder': 'IPv4/6 address'})
+        widget=forms.TextInput(attrs={
+            'class': 'form-input input-lg',  # TODO: Move this in theme!
+            'placeholder': 'IPv4/6 address'
+        })
     )

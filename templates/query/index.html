@@ -14,7 +14,7 @@
     <div class="column">
         <header class="navbar">
             <section class="navbar-section">
-                <a href="#" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <i class="icon icon-pages"></i> RDAP Explorer
                 </a>
             </section>
@@ -22,18 +22,22 @@
     </div>
 </div>
 <div class="columns">
-    <div class="column col-md-8 query">
+    <div class="column col-xl-6 col-lg-12 query">
        <h3>Query</h3>
         <form action="/" method="post">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Explore" />
+            <div class="form-group">
+                <div class="input-group">
+                    {{ form }}
+                    <input type="submit" class="btn btn-primary input-group-btn btn-lg" value="Explore" />
+                </div>
+            </div>
         </form>
     </div>
-    <div class="column col-md-8 results">
+    <div class="column col-xl-6 col-lg-12 results">
         {% if error %}
             <div class="error">
-                <h2>Error</h2>
+                <h3>Error</h3>
                 {{ error }}
             </div>
         {% elif result %}
