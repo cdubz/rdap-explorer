@@ -34,23 +34,24 @@
             </div>
         </form>
     </div>
+    {% if error or result %}
     <div class="column col-xl-6 col-lg-12 results">
+        <h3>Results</h3>
         {% if error %}
-            <div class="error">
-                <h3>Error</h3>
-                {{ error }}
-            </div>
+        <div class="toast toast-danger">
+            <strong>Error:</strong> {{ error }}
+        </div>
         {% elif result %}
-            <h3>Results</h3>
-            <div id="result"></div>
-            <script>
-                var result = document.getElementById('result');
-                var formatter = new JSONFormatter({{ result|safe }}, 1);
-                result.innerHTML = '';
-                result.appendChild(formatter.render());
-            </script>
+        <div id="result"></div>
+        <script>
+            var result = document.getElementById('result');
+            var formatter = new JSONFormatter({{ result|safe }}, 1);
+            result.innerHTML = '';
+            result.appendChild(formatter.render());
+        </script>
         {% endif %}
     </div>
+    {% endif %}
 </div>
 <div class="columns">
     <div class="column col-xl-12 what-is">
