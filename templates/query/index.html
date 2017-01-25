@@ -5,31 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} | RDAP Explorer</title>
+    <link rel="stylesheet" href="{% static "css/spectre.min.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
     <script src="{% static "js/json-formatter.js" %}"></script>
 </head>
-<body>
-<h1>RDAP Explorer</h1>
-<h2>Query</h2>
-<form action="/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Explore" />
-</form>
-{% if error %}
-    <div class="error">
-        <h2>Error</h2>
-        {{ error }}
+<body class="container">
+<div class="columns nav">
+    <div class="column">
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="#" class="navbar-brand">
+                    <i class="icon icon-pages"></i> RDAP Explorer
+                </a>
+            </section>
+        </header>
     </div>
-{% elif result %}
-    <h2>Results</h2>
-    <div id="result"></div>
-    <script>
-        var result = document.getElementById('result');
-        var formatter = new JSONFormatter({{ result|safe }}, 1);
-        result.innerHTML = '';
-        result.appendChild(formatter.render());
-    </script>
-{% endif %}
+</div>
+<div class="columns">
+    <div class="column">
+       <h3>Query</h3>
+        <form action="/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Explore" />
+        </form>
+        {% if error %}
+            <div class="error">
+                <h2>Error</h2>
+                {{ error }}
+            </div>
+        {% elif result %}
+            <h3>Results</h3>
+            <div id="result"></div>
+            <script>
+                var result = document.getElementById('result');
+                var formatter = new JSONFormatter({{ result|safe }}, 1);
+                result.innerHTML = '';
+                result.appendChild(formatter.render());
+            </script>
+        {% endif %}
+    </div>
+</div>
 </body>
 </html>

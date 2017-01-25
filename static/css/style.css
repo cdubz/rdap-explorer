@@ -1,0 +1,15 @@
+.nav {
+    background-color: #689f38;
+}
+
+.nav a {
+    color: #fff;
+}
+
+.navbar-brand {
+    font-size: 3rem;
+    font-weight: bold;
+    padding-right: 2rem;
+    text-decoration: none;
+    vertical-align: middle;
+}
