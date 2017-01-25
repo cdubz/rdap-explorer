@@ -34,7 +34,6 @@ def index(request):
 @cache_page(86400)
 @csrf_protect
 def results(request, query):
-    title = 'Results'
     error = None
     result = {}
 
