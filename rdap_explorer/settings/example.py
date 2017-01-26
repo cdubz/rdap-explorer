@@ -5,7 +5,7 @@ Django local settings for rdap_explorer project.
 from rdap_explorer.settings.base import *
 
 
-SECRET_KEY = 'l**(3qhyy0q1*t2qbq0738a^_kas2rfax08q4sh_siu5har6dy'
+SECRET_KEY = 'SECRET_KEY'
 
 DEBUG = True
 
