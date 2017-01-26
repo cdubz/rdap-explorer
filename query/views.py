@@ -40,7 +40,7 @@ def results(request, query):
     form = QueryForm(initial={"query": query})
     try:
         ip = ipwhois.IPWhois(query)
-        result = ip.lookup_rdap(retry_count=1, depth=2, inc_raw=True)
+        result = ip.lookup_rdap(retry_count=1, depth=2)
         title = ip.address_str
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
