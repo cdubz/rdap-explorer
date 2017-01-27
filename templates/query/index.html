@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }} | RDAP Explorer</title>
+    <title>{{ query }} | RDAP Explorer</title>
     <link rel="stylesheet" href="{% static "css/spectre.min.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
     <script src="{% static "js/json-formatter.js" %}"></script>
@@ -36,7 +36,7 @@
     </div>
     {% if error or result %}
     <div class="column col-xl-6 col-lg-12 results">
-        <h3>Results</h3>
+        <h3>Results for <strong>{{ query }}</strong></h3>
         {% if error %}
         <div class="toast toast-danger">
             <strong>Error:</strong> {{ error }}
