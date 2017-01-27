@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ query }} | RDAP Explorer</title>
+    <title>{{ title }} | RDAP Explorer</title>
     <link rel="stylesheet" href="{% static "css/spectre.min.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
     <script src="{% static "js/json-formatter.js" %}"></script>
@@ -48,7 +48,7 @@
     </div>
     {% elif result %}
     <div class="column col-xl-6 col-lg-12 results">
-        <h3>Results for <strong>{{ query }}</strong></h3>
+        <h3>Results for <strong>{{ title }}</strong></h3>
         <div id="result"></div>
         <script>
             var result = document.getElementById('result');

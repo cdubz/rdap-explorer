@@ -45,7 +45,7 @@ def results(request, query):
         error = e
 
     return render(request, 'query/index.html', {
-        'query': query,
+        'title': query,
         'error': error,
         'form': form,
         'result': dumps(result)
