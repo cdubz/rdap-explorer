@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | RDAP Explorer</title>
+    <link rel="stylesheet" href="{% static "css/spectre.min.css" %}" />
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <script src="{% static "js/json-formatter.js" %}"></script>
+</head>
+<body class="container">
+<div class="columns header">
+    <div class="column">
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="/" class="navbar-brand">
+                    <i class="icon icon-pages"></i> RDAP Explorer
+                </a>
+            </section>
+        </header>
+    </div>
+</div>
+<div class="columns app">
+    {% block app %}{% endblock %}
+</div>
+<div class="columns info">
+    <div class="column col-xl-6 col-lg-6 col-md-12 what-is-rdap">
+        <h3>What is RDAP?</h3>
+        <blockquote>
+            <p>The <strong>Registration Data Access Protocol</strong>
+                (RDAP) is an alternative to WHOIS for accessing Internet
+                resource registration data.  RDAP is designed to address
+                a number of shortcomings in the existing Whois service.
+                The most important changes are:
+            </p>
+            <ul>
+                <li>Standardization of queries and responses</li>
+                <li>Internationalization considerations to cater for
+                    languages other than English in data objects</li>
+                <li>Redirection capabilities to allow seamless referrals
+                    to other registries</li>
+            </ul>
+            <cite>- APNIC, <a href="https://www.apnic.net/apnic-info/whois_search/about/rdap">Registration Data Access Protocol</a></cite>
+        </blockquote>
+    </div>
+    <div class="column col-xl-6 col-lg-6 col-md-12 what-is-rdap-explorer">
+        <h3>What is RDAP Explorer?</h3>
+        <p><strong>RDAP Explorer</strong> provides a basic frontend for
+            querying, formatting and navigating RDAP information using:</p>
+        <ul>
+            <li><a href="https://github.com/secynic/ipwhois">IPWhois</a>
+                by Philip Hane.</li>
+            <li><a href="http://azimi.me/json-formatter-js/">JSONFormatter</a>
+                by <a href="http://azimi.me/">Mohsen Azimi</a>.</li>
+        </ul>
+
+        <p>This projected is maintained by <a href="https://chrxs.net/">Christopher Charbonneau Wells</a>
+            and the source is <a href="https://github.com/cdubz/rdap-explorer">freely available</a>
+            under an <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+    </div>
+</div>
+<div class="columns footer">
+    <div class="column col-xl-12">
+        <footer>rdap explorer</footer>
+    </div>
+</div>
+</body>
+</html>
