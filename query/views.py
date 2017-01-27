@@ -36,13 +36,14 @@ def index(request):
 def results(request, query):
     error = None
     result = {}
-
     form = QueryForm(initial={"query": query})
+
     try:
         ip = ipwhois.IPWhois(query)
         result = ip.lookup_rdap(retry_count=1, depth=2)
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
+
     return render(request, 'query/index.html', {
         'query': query,
         'error': error,

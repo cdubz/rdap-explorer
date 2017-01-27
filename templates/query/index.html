@@ -28,20 +28,27 @@
             {% csrf_token %}
             <div class="form-group">
                 <div class="input-group">
-                    {{ form }}
+                    {{ form.query }}
                     <input type="submit" class="btn btn-primary input-group-btn btn-lg" value="Explore" />
                 </div>
             </div>
         </form>
     </div>
-    {% if error or result %}
+    {% if form.query.errors or error %}
+    <div class="column col-xl-6 col-lg-12 results">
+        <h3>Error!</h3>
+        <div class="toast toast-danger">
+            <strong>Error:</strong>
+            {% if form.query.errors %}
+                {{ form.query.errors|join:", " }}
+            {% else %}
+                {{ error }}
+            {% endif %}
+        </div>
+    </div>
+    {% elif result %}
     <div class="column col-xl-6 col-lg-12 results">
         <h3>Results for <strong>{{ query }}</strong></h3>
-        {% if error %}
-        <div class="toast toast-danger">
-            <strong>Error:</strong> {{ error }}
-        </div>
-        {% elif result %}
         <div id="result"></div>
         <script>
             var result = document.getElementById('result');
@@ -49,7 +56,6 @@
             result.innerHTML = '';
             result.appendChild(formatter.render());
         </script>
-        {% endif %}
     </div>
     {% endif %}
 </div>
