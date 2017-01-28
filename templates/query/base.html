@@ -5,6 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} | RDAP Explorer</title>
+
+    <meta name="description" content="IPv4 and IPv6 RDAP query with interactive navigation." />
+    <meta name="keywords" content="ip, ipv4, ipv6, parse, parser, query, rdap, registration data access protocol, whois">
+
+    <meta property="og:site_name" content="RDAP Explorer"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+    {% if result %}
+    <meta property="og:description" content="Interactive RDAP query results for {{ title }}."/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="{% now "c" %}"/>
+    <meta property="article:tag" content="{{ title }}"/>
+    <meta property="article:tag" content="ip"/>
+    <meta property="article:tag" content="ipv4"/>
+    <meta property="article:tag" content="ipv6"/>
+    <meta property="article:tag" content="rdap"/>
+    <meta property="article:tag" content="results"/>
+    <meta property="article:tag" content="whois"/>
+    {% else %}
+    <meta property="og:description" content="IPv4 and IPv6 RDAP query with interactive navigation."/>
+    <meta property="og:type" content="website"/>
+    {% endif %}
+
     <link rel="stylesheet" href="{% static "css/spectre.min.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
     <script src="{% static "js/json-formatter.js" %}"></script>
