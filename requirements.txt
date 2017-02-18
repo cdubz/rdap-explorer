@@ -10,4 +10,4 @@
 django >= 1.10.5, < 1.11
 
 ## IP information lookup ##
-ipwhois >= 0.14.0, < 1.0
+ipwhois >= 0.15.1, < 1.0
