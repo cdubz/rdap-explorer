@@ -31,7 +31,9 @@
         <div class="columns">
             <div class="column col-6 results-summary">
                 <h4>Summary</h4>
-                <p>Summary text goes here.</p>
+                {% if roles.registrant %}
+                    <p>IP address registered to <strong>{{ roles.registrant.name }}</strong>.</p>
+                {% endif %}
             </div>
             <div class="column col-6 results-details">
                 <h4>Details</h4>

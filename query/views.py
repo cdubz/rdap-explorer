@@ -44,9 +44,21 @@ def results(request, query):
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
 
+    roles = {}
+    for object in result['objects']:
+        contact = result['objects'][object]['contact']
+        for role in result['objects'][object]['roles']:
+            if role not in roles:
+                roles[role] = {}
+                if contact['name'] is not None:
+                    roles[role]['name'] = contact['name']
+                if contact['email'] is not None:
+                    roles[role]['email'] = contact['email'][0]['value']
+
     return render(request, 'query/index.html', {
         'title': query,
         'error': error,
         'form': form,
+        'roles': roles,
         'result': dumps(result)
     })
