@@ -1,7 +1,7 @@
 {% extends "query/base.html" %}
 
 {% block app %}
-    <div class="column col-xl-6 col-lg-12 query">
+    <div class="column col-12 query">
        <h3>Query</h3>
         <form action="/" method="post">
             {% csrf_token %}
@@ -14,7 +14,7 @@
         </form>
     </div>
     {% if form.query.errors or error %}
-    <div class="column col-xl-6 col-lg-12 results">
+    <div class="column col-12 results">
         <h3>Error!</h3>
         <div class="toast toast-danger">
             <strong>Error:</strong>
@@ -26,15 +26,24 @@
         </div>
     </div>
     {% elif result %}
-    <div class="column col-xl-6 col-lg-12 results">
+    <div class="column col-12 results">
         <h3>Results for <strong>{{ title }}</strong></h3>
-        <div id="result" class="result-tree"></div>
-        <script>
-            var result = document.getElementById('result');
-            var formatter = new JSONFormatter({{ result|safe }}, 1);
-            result.innerHTML = '';
-            result.appendChild(formatter.render());
-        </script>
+        <div class="columns">
+            <div class="column col-6 results-summary">
+                <h4>Summary</h4>
+                <p>Summary text goes here.</p>
+            </div>
+            <div class="column col-6 results-details">
+                <h4>Details</h4>
+                <div id="result" class="result-tree"></div>
+                <script>
+                    var result = document.getElementById('result');
+                    var formatter = new JSONFormatter({{ result|safe }}, 1);
+                    result.innerHTML = '';
+                    result.appendChild(formatter.render());
+                </script>
+            </div>
+        </div>
     </div>
     {% endif %}
 {% endblock %}
