@@ -39,26 +39,28 @@ def results(request, query):
     result = {}
     form = QueryForm(initial={"query": query})
 
+    country = None
+    roles = {}
     try:
         ip = ipwhois.IPWhois(query)
         result = ip.lookup_rdap(retry_count=1, depth=2)
+
+        if result['asn_country_code']:
+            country = countries.get(
+                alpha_2=result['asn_country_code']).name
+
+        for object_name in result['objects']:
+            contact = result['objects'][object_name]['contact']
+            for role in result['objects'][object_name]['roles']:
+                if role not in roles:
+                    roles[role] = {}
+                    if contact['name'] is not None:
+                        roles[role]['name'] = contact['name']
+                    if contact['email'] is not None:
+                        roles[role]['email'] = contact['email'][0][
+                            'value']
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
-
-    country = None
-    if result['asn_country_code']:
-        country = countries.get(alpha_2=result['asn_country_code']).name
-
-    roles = {}
-    for object_name in result['objects']:
-        contact = result['objects'][object_name]['contact']
-        for role in result['objects'][object_name]['roles']:
-            if role not in roles:
-                roles[role] = {}
-                if contact['name'] is not None:
-                    roles[role]['name'] = contact['name']
-                if contact['email'] is not None:
-                    roles[role]['email'] = contact['email'][0]['value']
 
     return render(request, 'query/index.html', {
         'country': country,
