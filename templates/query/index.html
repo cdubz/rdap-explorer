@@ -31,10 +31,13 @@
         <div class="columns">
             <div class="column col-6 results-summary">
                 <h4>Summary</h4>
-                {% if roles.registrant and roles.registrant.name %}
-                    <p><strong>{{ title }}</strong> is registered to
-                        <strong>{{ roles.registrant.name }}</strong>.</p>
-                {% endif %}
+                <p>
+                    <strong>{{ title }}</strong> is registered
+                    {% if roles.registrant and roles.registrant.name %}
+                        to <strong>{{ roles.registrant.name }}</strong>
+                    {% endif %}
+                    in <strong>{{ country }}</strong>.
+                </p>
                 <p>The following contact points are listed for this IP:</p>
                 <ul>
                 {% for role, info in roles.items %}
