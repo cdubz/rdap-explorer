@@ -45,9 +45,9 @@ def results(request, query):
         error = e
 
     roles = {}
-    for object in result['objects']:
-        contact = result['objects'][object]['contact']
-        for role in result['objects'][object]['roles']:
+    for object_name in result['objects']:
+        contact = result['objects'][object_name]['contact']
+        for role in result['objects'][object_name]['roles']:
             if role not in roles:
                 roles[role] = {}
                 if contact['name'] is not None:

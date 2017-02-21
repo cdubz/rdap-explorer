@@ -1,5 +1,5 @@
 __title__ = 'RDAP Explorer'
-__version__ = '0.1.3'
+__version__ = '0.2.0'
 __author__ = 'Christopher Charbonneau Wells'
 __copyright__ = 'Copyright (c) 2017 Christopher Charbonneau Wells'
 __license__ = 'MIT'
