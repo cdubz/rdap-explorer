@@ -45,10 +45,9 @@ def results(request, query):
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
 
+    country = None
     if result['asn_country_code']:
-        result['asn_country'] = countries.get(
-            alpha_2=result['asn_country_code']
-        ).name
+        country = countries.get(alpha_2=result['asn_country_code']).name
 
     roles = {}
     for object_name in result['objects']:
@@ -62,9 +61,10 @@ def results(request, query):
                     roles[role]['email'] = contact['email'][0]['value']
 
     return render(request, 'query/index.html', {
-        'title': query,
+        'country': country,
         'error': error,
         'form': form,
         'roles': roles,
-        'result': dumps(result)
+        'result': dumps(result),
+        'title': query,
     })
