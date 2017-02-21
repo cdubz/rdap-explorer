@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 from json import dumps
+from pycountry import countries
 
 from .forms import QueryForm
 
@@ -43,6 +44,11 @@ def results(request, query):
         result = ip.lookup_rdap(retry_count=1, depth=2)
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
+
+    if result['asn_country_code']:
+        result['asn_country'] = countries.get(
+            alpha_2=result['asn_country_code']
+        ).name
 
     roles = {}
     for object_name in result['objects']:
