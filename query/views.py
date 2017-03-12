@@ -13,6 +13,7 @@ from json import dumps
 from pycountry import countries
 
 from .forms import QueryForm
+from .models import Log
 
 
 def index(request):
@@ -59,6 +60,9 @@ def results(request, query):
                     if contact['email'] is not None:
                         roles[role]['email'] = contact['email'][0][
                             'value']
+
+        log = Log(query=query)
+        log.save()
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
 
