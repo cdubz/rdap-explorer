@@ -29,7 +29,8 @@ def index(request):
 
     return render(request, 'query/index.html', {
         'title': 'Query',
-        'form': form
+        'form': form,
+        'recent_queries': Log.objects.order_by('-date')[:6],
     })
 
 
@@ -73,4 +74,5 @@ def results(request, query):
         'roles': roles,
         'result': dumps(result),
         'title': query,
+        'recent_queries': Log.objects.order_by('-date')[:6],
     })

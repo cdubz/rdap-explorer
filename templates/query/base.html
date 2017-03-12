@@ -82,6 +82,16 @@
         </ul>
     </div>
 </div>
+<div class="columns info">
+    <div class="column col-xl-6 col-lg-6 col-md-12 recent-queries">
+        <h3>Recent Queries</h3>
+        <ul>
+        {% for query in recent_queries %}
+            <li><a href="/{{ query.query }}/results">{{ query.query }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
 <div class="columns footer">
     <div class="column col-xl-12">
         <footer>
