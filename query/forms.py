@@ -15,3 +15,6 @@ class QueryForm(forms.Form):
             'placeholder': 'IPv4/6 address'
         })
     )
+    private = forms.BooleanField(
+        required=False
+    )

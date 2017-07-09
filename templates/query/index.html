@@ -11,6 +11,12 @@
                     <input type="submit" class="btn btn-primary input-group-btn btn-lg" value="Explore" />
                 </div>
             </div>
+            <div class="form-group">
+                <label class="form-switch">
+                    {{ form.private }}
+                    <i class="form-icon"></i> Exclude query from <strong>Recent Queries</strong> list.
+                </label>
+            </div>
         </form>
     </div>
     {% if form.query.errors or error %}

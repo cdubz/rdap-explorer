@@ -20,6 +20,9 @@ def index(request):
     if request.method == 'POST':
         form = QueryForm(request.POST)
         if form.is_valid():
+            log = Log(query=form['query'].value(),
+                      private=form['private'].value())
+            log.save()
             return HttpResponseRedirect(reverse(
                 'query:results',
                 args=(form['query'].value(),)
@@ -30,7 +33,9 @@ def index(request):
     return render(request, 'query/index.html', {
         'title': 'Query',
         'form': form,
-        'recent_queries': Log.objects.order_by('-date')[:6],
+        'recent_queries': Log.objects.filter(
+            private=False
+        ).order_by('-date')[:6],
     })
 
 
@@ -61,9 +66,6 @@ def results(request, query):
                     if contact['email'] is not None:
                         roles[role]['email'] = contact['email'][0][
                             'value']
-
-        log = Log(query=query)
-        log.save()
     except (ValueError, ipwhois.exceptions.IPDefinedError) as e:
         error = e
 
@@ -74,5 +76,7 @@ def results(request, query):
         'roles': roles,
         'result': dumps(result),
         'title': query,
-        'recent_queries': Log.objects.order_by('-date')[:6],
+        'recent_queries': Log.objects.filter(
+            private=False
+        ).order_by('-date')[:6],
     })
