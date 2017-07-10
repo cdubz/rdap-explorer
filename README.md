@@ -40,5 +40,5 @@ python manage.py createcachetable --settings=rdap_explorer.settings.custom
 python manage.py runserver --settings=rdap_explorer.settings.custom
 ```
 
-The application should not be available at 
+The application should now be available at 
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
