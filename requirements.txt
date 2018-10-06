@@ -7,10 +7,10 @@
 ##############################################
 
 ## Django web framework ##
-django >= 1.10.5, < 1.11
+django >= 2.1.2, < 2.2
 
 ## IP information lookup ##
-ipwhois >= 0.15.1, < 1.0
+ipwhois >= 1.0.0
 
 ## Country name lookup ##
-pycountry >= 17.1.8
+pycountry >= 18.5.26
