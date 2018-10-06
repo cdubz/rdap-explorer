@@ -3,6 +3,7 @@ Views for the rdap_explorer project, query app.
 """
 
 import ipwhois
+import warnings
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -49,8 +50,10 @@ def results(request, query):
     country = None
     roles = {}
     try:
-        ip = ipwhois.IPWhois(query)
-        result = ip.lookup_rdap(retry_count=1, depth=2)
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", category=UserWarning)
+            ip = ipwhois.IPWhois(query)
+            result = ip.lookup_rdap(retry_count=1, depth=2)
 
         if result['asn_country_code']:
             country = countries.get(
