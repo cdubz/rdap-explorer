@@ -7,7 +7,7 @@
 ##############################################
 
 ## Django web framework ##
-django >= 2.1.2, < 2.2
+django >= 2.2.2
 
 ## IP information lookup ##
 ipwhois >= 1.0.0
