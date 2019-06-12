@@ -1,2 +1,14 @@
+# Python files
 __pycache__/
 *.py[cod]
+
+# Env
+.env
+
+# IDE files
+.idea
+
+# Settings files
+rdap_explorer/settings
+!rdap_explorer/settings/base.py
+!rdap_explorer/settings/example.py
