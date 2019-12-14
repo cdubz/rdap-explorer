@@ -4,6 +4,7 @@ __pycache__/
 
 # Env
 .env
+.venv
 
 # IDE files
 .idea
@@ -12,3 +13,6 @@ __pycache__/
 rdap_explorer/settings
 !rdap_explorer/settings/base.py
 !rdap_explorer/settings/example.py
+
+# Local test files
+*.sqlite3

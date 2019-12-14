@@ -12,15 +12,15 @@ navigating RDAP information using:
 ### Prerequisites
 
 - Python 3.x
-- Virtualenv
+- Pip3 + pipenv
 
 ### Initiate environment
 
 ```commandline
+pip3 install --user pipenv
 cd /path/to/cloned/repo
-virtualenv --python=python3 .env
-source .env/bin/activate
-pip install -r requirements.txt
+export PIPENV_VENV_IN_PROJECT=1
+pipenv install --three
 ```
 
 ### Configure
@@ -35,9 +35,11 @@ Open `custom.py` in your preferred editor and add, at least, a `SECRET_KEY`.
 ### Run standalone
 
 ```commandline
-python manage.py migrate --settings=rdap_explorer.settings.custom
-python manage.py createcachetable --settings=rdap_explorer.settings.custom
-python manage.py runserver --settings=rdap_explorer.settings.custom
+pipenv shell
+export DJANGO_SETTINGS_FILE=rdap_explorer.settings.custom
+python manage.py migrate
+python manage.py createcachetable
+python manage.py runserver
 ```
 
 The application should now be available at 
