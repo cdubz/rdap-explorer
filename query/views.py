@@ -52,7 +52,7 @@ def results(request, query):
     try:
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", category=UserWarning)
-            ip = ipwhois.IPWhois(query)
+            ip = ipwhois.IPWhois(query, allow_permutations=True)
             result = ip.lookup_rdap(retry_count=1, depth=2)
 
         if result['asn_country_code']:
