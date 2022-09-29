@@ -1,9 +1,7 @@
-"""rdap_explorer URL Configuration
+"""RDAP Explorer URL Configuration
 """
-
-from django.conf.urls import include, url
-from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    url(r'^', include('query.urls')),
+    path("", include('query.urls')),
 ]

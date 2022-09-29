@@ -12,7 +12,6 @@ __pycache__/
 # Settings files
 rdap_explorer/settings
 !rdap_explorer/settings/base.py
-!rdap_explorer/settings/example.py
 
 # Local test files
 *.sqlite3

@@ -9,3 +9,4 @@ verify_ssl = true
 ipwhois = "*"
 pycountry = "*"
 Django = "*"
+python-dotenv = "*"
