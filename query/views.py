@@ -60,7 +60,7 @@ def results(request, query):
 
         for object_name in result["objects"]:
             contact = result["objects"][object_name]["contact"]
-            for role in result["objects"][object_name]["roles"]:
+            for role in result["objects"][object_name]["roles"] or []:
                 if role not in roles:
                     roles[role] = {}
                     if contact["name"] is not None:
