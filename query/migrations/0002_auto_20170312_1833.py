@@ -8,12 +8,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('query', '0001_initial'),
+        ("query", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Query',
-            new_name='Log',
+            old_name="Query",
+            new_name="Log",
         ),
     ]

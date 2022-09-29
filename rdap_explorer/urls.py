@@ -3,5 +3,5 @@
 from django.urls import include, path
 
 urlpatterns = [
-    path("", include('query.urls')),
+    path("", include("query.urls")),
 ]

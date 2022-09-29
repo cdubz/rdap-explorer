@@ -1,4 +1,5 @@
 # RDAP Explorer
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 **RDAP Explorer** provides a basic frontend for querying, formatting and
 navigating RDAP information using:
@@ -16,7 +17,7 @@ navigating RDAP information using:
 
 ### Initiate environment
 
-```commandline
+```shell
 pip3 install --user pipenv
 cd /path/to/cloned/repo
 export PIPENV_VENV_IN_PROJECT=1
@@ -25,7 +26,7 @@ pipenv install --three
 
 ### Configure
 
-```commandline
+```shell
 cd rdap_explorer/settings
 cp example.py custom.py
 ```
@@ -34,7 +35,7 @@ Open `custom.py` in your preferred editor and add, at least, a `SECRET_KEY`.
 
 ### Run standalone
 
-```commandline
+```shell
 pipenv shell
 export DJANGO_SETTINGS_FILE=rdap_explorer.settings.custom
 python manage.py migrate

@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('query', '0002_auto_20170312_1833'),
+        ("query", "0002_auto_20170312_1833"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='log',
-            name='private',
+            model_name="log",
+            name="private",
             field=models.BooleanField(default=False),
         ),
     ]

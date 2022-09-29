@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('query', '0003_log_private'),
+        ("query", "0003_log_private"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='log',
-            name='id',
+            model_name="log",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
     ]
