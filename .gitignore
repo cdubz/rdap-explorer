@@ -13,5 +13,8 @@ __pycache__/
 rdap_explorer/settings
 !rdap_explorer/settings/base.py
 
-# Local test files
-*.sqlite3
+# Pipfile.lock.
+# Committing this file makes it difficult to support multiple Python versions as
+# requirements can different between versions, but the Pipfile only supports
+# locking to one version.
+Pipfile.lock
